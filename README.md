@@ -175,12 +175,22 @@ For business enquiries, training opportunities, or technology solutions, please 
 
 Website: Coming Soon
 
-Email: info@example.com
+Email: contactus@networkforge.com
 
 ---
 
 ## License
 
-This project is currently maintained by Network Forge.
+Copyright (c) 2026 Nexora Technologies. All rights reserved.
+
+This project and its source code are proprietary to Network Forge.
+
+No permission is granted to copy, modify, distribute, publish, or use this software for commercial purposes without prior written permission from the copyright owner.
+
+The website content, design, branding, and original software are protected by applicable intellectual property laws.
+
+For licensing enquiries or permission to use this software, please contact:
+
+Email: contactus@networkforge.com
 
 A formal open-source license may be added in the future.
