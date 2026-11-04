@@ -61,7 +61,7 @@ The website provides information about our services, company expertise, and busi
 ## Project Structure
 
 ```text
-nexora-website/
+networkforge/
 │
 ├── index.html
 ├── style.css
@@ -86,13 +86,13 @@ You will need:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/nexora-website.git
+   git clone https://github.com/YOUR_USERNAME/networkforge.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd nexora-website
+   cd networkforge
    ```
 
 3. Open the project in Visual Studio Code:
@@ -138,7 +138,7 @@ This website can be deployed using GitHub Pages.
 The website will be published at:
 
 ```text
-https://YOUR_USERNAME.github.io/nexora-website/
+https://YOUR_USERNAME.github.io/networkforge/
 ```
 
 A custom domain can be connected later.
@@ -181,7 +181,7 @@ Email: contactus@networkforge.com
 
 ## License
 
-Copyright (c) 2026 Nexora Technologies. All rights reserved.
+Copyright (c) 2026 Network Forge. All rights reserved.
 
 This project and its source code are proprietary to Network Forge.
 
