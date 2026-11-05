@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Network Performance Tools | Network Forge</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f8fc;
+            color: #17243a;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #071a35;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #071a35, #123d70);
+            color: white;
+            padding: 90px 7%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero h1 {
+            font-size: 43px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #d4e5f7;
+            margin-bottom: 28px;
+            max-width: 650px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 24px;
+            background: #0ea5e9;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0284c7;
+        }
+
+        .hero-panel {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .hero-panel h3 {
+            margin-bottom: 15px;
+        }
+
+        .hero-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .hero-stat:last-child {
+            border-bottom: none;
+        }
+
+        section {
+            padding: 75px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 40px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            color: #0b2545;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: #617187;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 27px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(15,40,70,0.06);
+            border: 1px solid #e5edf5;
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            color: #0b2545;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .dashboard-section {
+            background: #eaf2fa;
+        }
+
+        .dashboard {
+            background: #071a35;
+            color: white;
+            max-width: 1100px;
+            margin: auto;
+            padding: 28px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(7,26,53,0.15);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .demo-label {
+            color: #7dd3fc;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .status {
+            color: #86efac;
+            font-size: 13px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .metric {
+            background: #102b4c;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .metric small {
+            color: #a9c2df;
+        }
+
+        .metric h2 {
+            font-size: 27px;
+            margin: 8px 0;
+            color: #38bdf8;
+        }
+
+        .metric p {
+            font-size: 12px;
+            color: #86efac;
+        }
+
+        .analysis-box {
+            margin-top: 20px;
+            background: #102b4c;
+            border-left: 4px solid #38bdf8;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .analysis-box h3 {
+            margin-bottom: 8px;
+        }
+
+        .analysis-box p {
+            color: #d4e5f7;
+            font-size: 14px;
+        }
+
+        .dashboard-button {
+            margin-top: 20px;
+        }
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 15px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #0ea5e9;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .process-step h3 {
+            margin-bottom: 8px;
+        }
+
+        .process-step p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .faq-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid #e5edf5;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 18px;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #0b2545;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 18px 18px;
+            color: #64748b;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: #0284c7;
+        }
+
+        .contact-section {
+            background: #eaf2fa;
+        }
+
+        .contact-form {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(15,40,70,0.06);
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 12px 0 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            margin-top: 18px;
+        }
+
+        footer {
+            background: #071a35;
+            color: #cbd5e1;
+            padding: 30px 7%;
+            text-align: center;
+        }
+
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            header {
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                padding-top: 15px;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .cards,
+            .metrics,
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 6%;
+            }
+
+            .dashboard {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">NETWORKFORGE</div>
+
+    <button class="menu-toggle" id="menuToggle"
+            aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="navigation">
+        <a href="index.html">Home</a>
+        <a href="network-training.html">Network Training</a>
+        <a href="website-development.html">Website Development</a>
+        <a href="network-cctv-solutions.html">Network & CCTV</a>
+        <a href="#services">AI Network Tools</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Smarter Networks with <span>AI Performance Tools</span></h1>
+
+        <p>
+            Discover intelligent network monitoring, performance analysis
+            and automation solutions. Help your business identify network
+            issues, understand performance and make better infrastructure
+            decisions.
+        </p>
+
+        <a href="#services" class="btn">Explore Our Solutions</a>
+    </div>
+
+    <div class="hero-panel">
+        <h3>Intelligent Network Insights</h3>
+
+        <div class="hero-stat">
+            <span>Network Monitoring</span>
+            <strong>24/7</strong>
+        </div>
+
+        <div class="hero-stat">
+            <span>Performance Analysis</span>
+            <strong>AI Assisted</strong>
+        </div>
+
+        <div class="hero-stat">
+            <span>Fault Detection</span>
+            <strong>Automated</strong>
+        </div>
+
+        <div class="hero-stat">
+            <span>Reporting</span>
+            <strong>Real-time*</strong>
+        </div>
+
+        <small>*Subject to the monitoring platform and data source.</small>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <div class="section-heading">
+        <h2>Our AI Network Solutions</h2>
+        <p>
+            Use intelligent tools to monitor, analyse and improve
+            your network infrastructure.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">📡</div>
+            <h3>AI Network Monitoring</h3>
+            <p>
+                Monitor network devices, connectivity and performance
+                indicators from a centralised dashboard.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Performance Analytics</h3>
+            <p>
+                Analyse bandwidth, latency, packet loss and network
+                utilisation to identify performance trends.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔍</div>
+            <h3>Intelligent Fault Detection</h3>
+            <p>
+                Identify unusual network behaviour and highlight
+                potential faults for further investigation.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">⚙️</div>
+            <h3>Network Automation</h3>
+            <p>
+                Explore automation for routine network checks,
+                configuration tasks and operational workflows.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>Network Security Insights</h3>
+            <p>
+                Review device health, traffic patterns and selected
+                security events to support network operations.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📈</div>
+            <h3>AI Reports & Recommendations</h3>
+            <p>
+                Turn network performance data into readable reports
+                and suggested actions for engineering teams.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- INTERACTIVE DASHBOARD -->
+<section class="dashboard-section">
+    <div class="section-heading">
+        <h2>Interactive Network Dashboard</h2>
+        <p>
+            Explore a sample dashboard showing how network performance
+            information could be presented.
+        </p>
+    </div>
+
+    <div class="dashboard">
+
+        <div class="dashboard-header">
+            <div>
+                <h2>Network Health Overview</h2>
+                <span class="demo-label">ILLUSTRATIVE DEMO DATA</span>
+            </div>
+
+            <span class="status" id="networkStatus">
+                ● Demo network healthy
+            </span>
+        </div>
+
+        <div class="metrics">
+
+            <div class="metric">
+                <small>Bandwidth Usage</small>
+                <h2 id="bandwidth">68%</h2>
+                <p>Sample utilisation</p>
+            </div>
+
+            <div class="metric">
+                <small>Network Latency</small>
+                <h2 id="latency">24 ms</h2>
+                <p>Sample response time</p>
+            </div>
+
+            <div class="metric">
+                <small>Packet Loss</small>
+                <h2 id="packetLoss">0.2%</h2>
+                <p>Sample packet loss</p>
+            </div>
+
+            <div class="metric">
+                <small>Connected Devices</small>
+                <h2 id="devices">48</h2>
+                <p>Sample device count</p>
+            </div>
+
+        </div>
+
+        <div class="analysis-box">
+            <h3>🤖 AI Performance Assistant</h3>
+            <p id="aiAnalysis" aria-live="polite">
+                The sample network is operating within the displayed
+                demonstration thresholds. No simulated performance
+                warning is currently active.
+            </p>
+        </div>
+
+        <button class="btn dashboard-button" id="analyseButton">
+            Run Sample Analysis
+        </button>
+
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+    <div class="section-heading">
+        <h2>How Our Solution Works</h2>
+        <p>
+            A structured approach to understanding and improving
+            your network performance.
+        </p>
+    </div>
+
+    <div class="process">
+
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Collect Data</h3>
+            <p>
+                Gather network information from supported devices,
+                monitoring systems and logs.
+            </p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Analyse Performance</h3>
+            <p>
+                Examine network metrics and identify unusual
+                behaviour or performance trends.
+            </p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Generate Insights</h3>
+            <p>
+                Present findings and recommended investigation
+                steps in a clear format.
+            </p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Improve Networks</h3>
+            <p>
+                Help engineering teams prioritise corrective
+                actions and monitor the results.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- USE CASES -->
+<section style="background:#eaf2fa;">
+    <div class="section-heading">
+        <h2>Where Can AI Network Tools Help?</h2>
+        <p>
+            Intelligent monitoring can support a wide range of
+            network environments.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🏢 Enterprise Networks</h3>
+            <p>
+                Monitor LAN, WAN, WLAN and VPN infrastructure
+                across multiple business locations.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>☁️ Cloud & Data Centres</h3>
+            <p>
+                Review network performance, traffic patterns
+                and infrastructure capacity.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🌐 Service Providers</h3>
+            <p>
+                Support network operations teams with performance
+                visibility and fault investigation.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FAQ -->
+<section>
+    <div class="section-heading">
+        <h2>Frequently Asked Questions</h2>
+        <p>Learn more about AI-assisted network performance tools.</p>
+    </div>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <button class="faq-question">
+                What are AI Network Performance Tools?
+            </button>
+            <div class="faq-answer">
+                They use data analysis and, where configured,
+                machine learning to help monitor network performance,
+                identify unusual patterns and support troubleshooting.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Can AI identify network problems?
+            </button>
+            <div class="faq-answer">
+                AI-assisted systems can highlight anomalies and
+                potential faults. Engineers should validate findings
+                before making network changes.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Can these tools work with Cisco and other vendors?
+            </button>
+            <div class="faq-answer">
+                Integration depends on the devices, APIs, telemetry
+                protocols and monitoring platforms available.
+                Supported integrations should be assessed for each project.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Does Network Forge provide custom solutions?
+            </button>
+            <div class="faq-answer">
+                Contact us to discuss your requirements and explore
+                suitable monitoring, analytics and automation options.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="enquiry">
+    <div class="section-heading">
+        <h2>Discuss Your AI Network Project</h2>
+        <p>
+            Tell us about your network environment and the challenges
+            you would like to address.
+        </p>
+    </div>
+
+    <form class="contact-form" id="enquiryForm">
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+
+        <label for="company">Company Name</label>
+        <input type="text" id="company">
+
+        <label for="service">Area of Interest</label>
+        <select id="service" required>
+            <option value="">Select a service</option>
+            <option>AI Network Monitoring</option>
+            <option>Network Performance Analytics</option>
+            <option>Intelligent Fault Detection</option>
+            <option>Network Automation</option>
+            <option>Custom AI Network Solution</option>
+        </select>
+
+        <label for="message">Project Requirements</label>
+        <textarea id="message"
+                  placeholder="Describe your network requirements..."
+                  required></textarea>
+
+        <button type="submit" class="btn">
+            Send Enquiry
+        </button>
+
+    </form>
+</section>
+
+<footer>
+    <p>© <span id="year"></span> Network forge. All rights reserved.</p>
+    <p>Intelligent Networking | Technology | Innovation</p>
+    <p><a href="index.html">Back to Home</a></p>
+</footer>
+
+<script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navigation = document.getElementById("navigation");
+
+    menuToggle.addEventListener("click", function () {
+        const isOpen = navigation.classList.toggle("active");
+        menuToggle.setAttribute("aria-expanded", isOpen);
+    });
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll("#navigation a").forEach(link => {
+        link.addEventListener("click", function () {
+            navigation.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+
+    // Footer year
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-question").forEach(button => {
+        button.addEventListener("click", function () {
+            const item = this.parentElement;
+            item.classList.toggle("active");
+        });
+    });
+
+    // Illustrative network performance demo
+    document.getElementById("analyseButton")
+        .addEventListener("click", function () {
+
+        const bandwidth = Math.floor(Math.random() * 61) + 30;
+        const latency = Math.floor(Math.random() * 81) + 10;
+        const packetLoss = (Math.random() * 1.5).toFixed(2);
+        const devices = Math.floor(Math.random() * 31) + 35;
+
+        document.getElementById("bandwidth").textContent =
+            bandwidth + "%";
+
+        document.getElementById("latency").textContent =
+            latency + " ms";
+
+        document.getElementById("packetLoss").textContent =
+            packetLoss + "%";
+
+        document.getElementById("devices").textContent =
+            devices;
+
+        const analysis = document.getElementById("aiAnalysis");
+        const status = document.getElementById("networkStatus");
+
+        let messages = [];
+
+        if (bandwidth > 80) {
+            messages.push(
+                "High bandwidth utilisation detected. Review traffic usage."
+            );
+        }
+
+        if (latency > 60) {
+            messages.push(
+                "Elevated latency detected. Investigate network delay."
+            );
+        }
+
+        if (Number(packetLoss) > 1) {
+            messages.push(
+                "Packet loss is elevated. Check links and interface errors."
+            );
+        }
+
+        if (messages.length === 0) {
+            analysis.textContent =
+                "The simulated network readings are within the " +
+                "demo thresholds. Continue monitoring performance.";
+            status.textContent = "● Demo network healthy";
+            status.style.color = "#86efac";
+        } else {
+            analysis.textContent = messages.join(" ");
+            status.textContent = "● Demo warning detected";
+            status.style.color = "#fbbf24";
+        }
+
+    });
+
+    // Enquiry form
+    document.getElementById("enquiryForm")
+        .addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const company = document.getElementById("company").value;
+        const service = document.getElementById("service").value;
+        const message = document.getElementById("message").value;
+
+        const subject = encodeURIComponent(
+            "AI Network Performance Enquiry"
+        );
+
+        const body = encodeURIComponent(
+            "Name: " + name +
+            "\nEmail: " + email +
+            "\nCompany: " + company +
+            "\nService: " + service +
+            "\nRequirements: " + message
+        );
+
+        // Replace with your real business email address
+        window.location.href =
+            "mailto:contactus@network-forge.com?subject=" +
+            subject + "&body=" + body;
+    });
+</script>
+
+</body>
+</html>
