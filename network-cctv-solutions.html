@@ -1,0 +1,1179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Network Forge provides network infrastructure, structured cabling, CCTV installation and technical support solutions.">
+
+  <title>Network & CCTV Solutions | Network Forge</title>
+
+  <style>
+    :root {
+      --navy: #0b1730;
+      --blue: #2563eb;
+      --cyan: #38bdf8;
+      --light: #f4f7fc;
+      --text: #172033;
+      --muted: #64748b;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: white;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* Navigation */
+
+    header {
+      background: var(--navy);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .nav-cta {
+      background: var(--blue);
+      padding: 10px 15px;
+      border-radius: 7px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: white;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      color: white;
+      padding: 105px 0;
+      background:
+        radial-gradient(circle at 85% 20%, #1d4ed8 0, transparent 34%),
+        linear-gradient(125deg, #0b1730, #142b50);
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: #ffffff14;
+      border: 1px solid #ffffff30;
+      border-radius: 30px;
+      padding: 7px 14px;
+      color: #bae6fd;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(37px, 6vw, 60px);
+      line-height: 1.12;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #dbeafe;
+      max-width: 680px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .button-primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .button-outline {
+      border: 1px solid #93c5fd;
+      color: white;
+      margin-left: 10px;
+    }
+
+    /* General sections */
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* Services */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 28px;
+      border: 1px solid #e2e8f0;
+      border-radius: 13px;
+      background: white;
+      transition: 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px #0f172a12;
+    }
+
+    .service-icon {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Network diagram */
+
+    .network-section {
+      background: var(--light);
+    }
+
+    .network-panel {
+      background: white;
+      padding: 35px;
+      border: 1px solid #e2e8f0;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .network-flow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .network-node {
+      min-width: 145px;
+      padding: 20px 15px;
+      border-radius: 10px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+
+    .network-node strong {
+      display: block;
+      color: var(--navy);
+      margin-top: 7px;
+    }
+
+    .network-node span {
+      font-size: 28px;
+    }
+
+    .network-arrow {
+      color: var(--blue);
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .network-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 22px;
+    }
+
+    /* CCTV feature */
+
+    .cctv-section {
+      background: white;
+    }
+
+    .cctv-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .cctv-visual {
+      background: linear-gradient(140deg, #0b1730, #1e40af);
+      min-height: 300px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .cctv-visual span {
+      font-size: 85px;
+    }
+
+    .cctv-visual h3 {
+      font-size: 23px;
+      margin-top: 15px;
+    }
+
+    .cctv-content h2 {
+      font-size: 34px;
+      color: var(--navy);
+      margin-bottom: 15px;
+    }
+
+    .cctv-content p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    .feature-list li {
+      margin-bottom: 11px;
+      font-size: 15px;
+    }
+
+    .feature-list li::before {
+      content: "✓ ";
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    /* Process */
+
+    .process-section {
+      background: var(--light);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .process-card {
+      padding: 24px;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .process-card h3 {
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .process-card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Solutions */
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .solution-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    .solution-card h3 {
+      color: var(--navy);
+      margin-bottom: 9px;
+    }
+
+    .solution-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* FAQ */
+
+    .faq-section {
+      background: var(--light);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 19px;
+      background: white;
+      border: none;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 19px 19px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* Contact */
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      color: var(--navy);
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .contact-form {
+      padding: 28px;
+      background: var(--light);
+      border-radius: 13px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font: inherit;
+      background: white;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-message {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    /* Footer */
+
+    footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--cyan);
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        padding: 22px;
+        background: var(--navy);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cctv-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .hero {
+        padding: 75px 0;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .button-outline {
+        margin: 12px 0 0;
+      }
+
+      .services-grid,
+      .process-grid,
+      .solutions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .network-arrow {
+        transform: rotate(90deg);
+      }
+
+      section {
+        padding: 58px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container navbar">
+
+      <a class="logo" href="index.html">
+        NETWORKFORGE<span>.</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+              aria-label="Toggle navigation"
+              aria-expanded="false">
+        ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="network-training.html">Training</a>
+        <a href="website-development.html">Website Development</a>
+        <a href="network-cctv-solutions.html">Network & CCTV</a>
+        <a href="index.html#services">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="#enquiry" class="nav-cta">Request a Quote</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="eyebrow">
+          NETWORK FORGE · NETWORK INFRASTRUCTURE
+        </span>
+
+        <h1>
+          Connecting Your Business.
+          <span>Protecting Your Premises.</span>
+        </h1>
+
+        <p>
+          Network infrastructure, structured cabling, Wi-Fi
+          and CCTV solutions designed to support reliable
+          business connectivity and security systems.
+        </p>
+
+        <a href="#enquiry" class="button button-primary">
+          Discuss Your Requirements
+        </a>
+
+        <a href="#services" class="button button-outline">
+          Explore Solutions
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Main services -->
+    <section id="services">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Network & CCTV Services</h2>
+          <p>
+            Practical infrastructure and installation services
+            for offices, commercial premises and business environments.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>Network Installation</h3>
+            <p>
+              Design, installation and configuration of LAN,
+              WAN and business network infrastructure.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🔌</div>
+            <h3>Structured Cabling</h3>
+            <p>
+              Ethernet cabling, fibre connectivity, patch panels,
+              network outlets and cabinet organisation.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📶</div>
+            <h3>Wi-Fi Solutions</h3>
+            <p>
+              Wireless access point installation, coverage planning
+              and configuration for business environments.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📹</div>
+            <h3>CCTV Installation</h3>
+            <p>
+              Camera positioning, cabling, recording equipment
+              configuration and system testing.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🖥️</div>
+            <h3>Network Equipment</h3>
+            <p>
+              Installation and configuration of switches, routers,
+              firewalls and network cabinets.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🛠️</div>
+            <h3>Maintenance & Support</h3>
+            <p>
+              Network troubleshooting, connectivity checks,
+              equipment maintenance and technical support.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Network infrastructure diagram -->
+    <section class="network-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Business Network Infrastructure</h2>
+          <p>
+            A simplified example of how business devices
+            connect through a network.
+          </p>
+        </div>
+
+        <div class="network-panel">
+
+          <h3>Example Network Architecture</h3>
+
+          <div class="network-flow">
+
+            <div class="network-node">
+              <span>🌍</span>
+              <strong>Internet</strong>
+            </div>
+
+            <div class="network-arrow">→</div>
+
+            <div class="network-node">
+              <span>🛡️</span>
+              <strong>Firewall / Router</strong>
+            </div>
+
+            <div class="network-arrow">→</div>
+
+            <div class="network-node">
+              <span>🔀</span>
+              <strong>Network Switch</strong>
+            </div>
+
+            <div class="network-arrow">→</div>
+
+            <div class="network-node">
+              <span>💻</span>
+              <strong>Business Devices</strong>
+            </div>
+
+          </div>
+
+          <p class="network-note">
+            Conceptual illustration only. Actual network designs
+            depend on the site, equipment and security requirements.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CCTV -->
+    <section class="cctv-section">
+      <div class="container cctv-layout">
+
+        <div class="cctv-visual">
+          <div>
+            <span>📹</span>
+            <h3>CCTV & Camera Systems</h3>
+            <p>Installation · Configuration · Testing</p>
+          </div>
+        </div>
+
+        <div class="cctv-content">
+
+          <h2>CCTV Installation & Configuration</h2>
+
+          <p>
+            We can help businesses plan and install CCTV
+            infrastructure, from camera placement and cabling
+            to recording equipment and system testing.
+          </p>
+
+          <ul class="feature-list">
+            <li>Camera location and coverage planning</li>
+            <li>Network and power cabling</li>
+            <li>IP camera installation</li>
+            <li>NVR and recording equipment configuration</li>
+            <li>Live camera connectivity checks</li>
+            <li>System handover and basic user guidance</li>
+          </ul>
+
+          <p>
+            CCTV projects should also consider privacy,
+            appropriate signage, access controls and
+            applicable data protection requirements.
+          </p>
+
+          <a href="#enquiry" class="button button-primary">
+            Enquire About CCTV
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional solutions -->
+    <section>
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Additional Infrastructure Solutions</h2>
+          <p>
+            Supporting the physical and technical foundations
+            of your business IT environment.
+          </p>
+        </div>
+
+        <div class="solutions-grid">
+
+          <article class="solution-card">
+            <h3>🏢 Office Network Infrastructure</h3>
+            <p>
+              Network cabinets, structured cabling, switches,
+              connectivity and office network deployment.
+            </p>
+          </article>
+
+          <article class="solution-card">
+            <h3>🗄️ Data Centre Infrastructure</h3>
+            <p>
+              Rack installation, patching, equipment connectivity
+              and physical infrastructure support.
+            </p>
+          </article>
+
+          <article class="solution-card">
+            <h3>🔐 Network Security Infrastructure</h3>
+            <p>
+              Firewall deployment support, network segmentation
+              planning and secure connectivity configuration.
+            </p>
+          </article>
+
+          <article class="solution-card">
+            <h3>📊 Network Performance Checks</h3>
+            <p>
+              Connectivity testing, fault investigation and
+              network performance observations.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Our Installation Process</h2>
+          <p>
+            A structured approach to understanding, installing
+            and testing your infrastructure.
+          </p>
+        </div>
+
+        <div class="process-grid">
+
+          <article class="process-card">
+            <div class="step-number">1</div>
+            <h3>Site Assessment</h3>
+            <p>
+              Understand your premises, connectivity needs,
+              equipment and installation requirements.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <div class="step-number">2</div>
+            <h3>Plan & Design</h3>
+            <p>
+              Identify suitable equipment, cable routes,
+              camera locations and network layout.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <div class="step-number">3</div>
+            <h3>Installation</h3>
+            <p>
+              Install and configure the agreed infrastructure
+              and equipment.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <div class="step-number">4</div>
+            <h3>Testing & Handover</h3>
+            <p>
+              Check connectivity, test equipment and
+              explain the completed installation.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Frequently Asked Questions</h2>
+          <p>Common questions about our infrastructure services.</p>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can you install a business network?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              We can discuss network requirements including
+              routers, switches, structured cabling, Wi-Fi
+              and business connectivity.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do you provide CCTV installation?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              CCTV installation can include camera positioning,
+              cabling, network connectivity, recording equipment
+              and system testing, subject to the project scope.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can you troubleshoot existing network issues?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              Yes. We can discuss connectivity problems,
+              equipment configuration, cabling faults
+              and network performance investigations.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do you support offices and commercial premises?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              Our proposed services are aimed at business
+              environments, including offices and commercial
+              premises. Project suitability is assessed individually.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Enquiry form -->
+    <section id="enquiry">
+      <div class="container contact-layout">
+
+        <div class="contact-info">
+
+          <h2>Discuss Your Network Project</h2>
+
+          <p>
+            Planning a new office network, CCTV installation
+            or infrastructure upgrade?
+          </p>
+
+          <p>
+            Share your requirements with Network Forge 
+            and tell us what support you need.
+          </p>
+
+          <p><strong>Network Forge</strong></p>
+
+          <p>
+            Network Infrastructure · CCTV · Connectivity · Technical Support
+          </p>
+
+        </div>
+
+        <form class="contact-form" id="projectForm">
+
+          <div class="form-group">
+            <label for="customerName">Your Name</label>
+            <input type="text" id="customerName"
+                   name="name" required minlength="2">
+          </div>
+
+          <div class="form-group">
+            <label for="customerEmail">Email Address</label>
+            <input type="email" id="customerEmail"
+                   name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="serviceType">Service Required</label>
+
+            <select id="serviceType" name="serviceType" required>
+              <option value="">Select a service</option>
+              <option>Network Installation</option>
+              <option>Structured Cabling</option>
+              <option>Wi-Fi Installation</option>
+              <option>CCTV Installation</option>
+              <option>Network Equipment</option>
+              <option>Data Centre Infrastructure</option>
+              <option>Network Maintenance</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="projectDetails">Project Details</label>
+
+            <textarea id="projectDetails"
+                      name="details"
+                      required minlength="10"
+                      placeholder="Describe your network or CCTV requirements...">
+            </textarea>
+          </div>
+
+          <button type="submit" class="button button-primary">
+            Prepare Enquiry
+          </button>
+
+          <p class="form-message" id="formMessage" role="status"></p>
+
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+
+      <p>
+        © <span id="year"></span>
+        Network Forge. All rights reserved.
+      </p>
+
+      <p>
+        <a href="index.html">Home</a> ·
+        <a href="contact.html">Contact</a>
+      </p>
+
+    </div>
+  </footer>
+
+  <script>
+
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-question").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const item = button.closest(".faq-item");
+        const isActive = item.classList.toggle("active");
+
+        button.setAttribute("aria-expanded", isActive);
+
+      });
+
+    });
+
+    // Footer year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Project enquiry form
+    document.getElementById("projectForm")
+      .addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const form = event.currentTarget;
+
+        if (!form.reportValidity()) {
+          return;
+        }
+
+        const name =
+          document.getElementById("customerName").value.trim();
+
+        const email =
+          document.getElementById("customerEmail").value.trim();
+
+        const service =
+          document.getElementById("serviceType").value;
+
+        const details =
+          document.getElementById("projectDetails").value.trim();
+
+        const subject = encodeURIComponent(
+          "Network & CCTV Enquiry - " + service
+        );
+
+        const body = encodeURIComponent(
+          "Name: " + name + "\n" +
+          "Email: " + email + "\n" +
+          "Service: " + service + "\n\n" +
+          "Project details:\n" + details
+        );
+
+        // Replace with your real business email
+        const businessEmail = "contactus@network-forge.com";
+
+        document.getElementById("formMessage").textContent =
+          "Opening your email application to prepare your enquiry.";
+
+        window.location.href =
+          "mailto:" + businessEmail +
+          "?subject=" + subject +
+          "&body=" + body;
+
+      });
+
+  </script>
+
+</body>
+</html>
