@@ -64,9 +64,15 @@ The website provides information about our services, company expertise, and busi
 networkforge/
 │
 ├── index.html
+├── contact.html
+├── network-training.html
+├── website-development.html
+├── network-cctv-solutions.html
+├── lesson-what-is-a-network.html
 ├── style.css
 ├── script.js
-└── README.md
+├── README.md
+└── CNAME
 ```
 
 ---
