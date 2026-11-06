@@ -399,32 +399,6 @@ footer {
 
 /* NETWORK TRAINING PAGE */
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-
-.logo span {
-    color: #60a5fa;
-}
-
-.nav-links {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-}
-
-.nav-links a:hover {
-    color: #60a5fa;
-}
-
 header {
     background: #071a35;
     color: white;
@@ -442,6 +416,10 @@ header {
     font-weight: bold;
     color: #38bdf8;
     white-space: nowrap;
+}
+
+.logo span {
+    color: #60a5fa;
 }
 
 .nav-links {
