@@ -399,42 +399,30 @@ footer {
 
 /* NETWORK TRAINING PAGE */
 
-header {
-    background: #071a35;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
     color: white;
-    padding: 18px 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 25px;
-    min-height: 75px;
-    flex-wrap: wrap;
+    text-decoration: none;
 }
 
-.logo {
-    font-size: 26px;
-    font-weight: bold;
-    color: #38bdf8;
-    white-space: nowrap;
+.logo span {
+    color: #60a5fa;
 }
 
 .nav-links {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 22px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 14px;
-    white-space: nowrap;
 }
 
 .nav-links a:hover {
-    color: #38bdf8;
+    color: #60a5fa;
 }
 
 @media (max-width: 900px) {
