@@ -49,3 +49,58 @@ if (contactForm) {
     });
 
 }
+/* NETWORKING FUNDAMENTALS QUIZ */
+
+const networkQuiz = document.getElementById("networkQuiz");
+
+if (networkQuiz) {
+
+    networkQuiz.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const answers = {
+            q1: "b",
+            q2: "a",
+            q3: "b"
+        };
+
+        let score = 0;
+
+        const totalQuestions =
+            Object.keys(answers).length;
+
+        for (const question in answers) {
+
+            const selectedAnswer =
+                networkQuiz.querySelector(
+                    `input[name="${question}"]:checked`
+                );
+
+            if (
+                selectedAnswer &&
+                selectedAnswer.value === answers[question]
+            ) {
+                score++;
+            }
+
+        }
+
+        const result =
+            document.getElementById("quizResult");
+
+        if (score === totalQuestions) {
+
+            result.textContent =
+                `Excellent! You scored ${score}/${totalQuestions}. All answers are correct!`;
+
+        } else {
+
+            result.textContent =
+                `You scored ${score}/${totalQuestions}. Review the lesson and try again!`;
+
+        }
+
+    });
+
+}
