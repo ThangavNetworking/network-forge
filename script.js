@@ -46,11 +46,63 @@ if (contactForm) {
         document.getElementById("formStatus").textContent =
             "Opening your email application...";
 
-        window.location.href = mailtoLink;
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script src="script.js"></script>
+        
 
     });
 
 }
+
+// Initialise EmailJS
+emailjs.init({
+    publicKey: "YOUR_PUBLIC_KEY"
+});
+
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const button = document.getElementById("submitBtn");
+    const status = document.getElementById("formStatus");
+
+    button.disabled = true;
+    button.textContent = "Sending...";
+
+    try {
+
+        await emailjs.sendForm(
+            "YOUR_SERVICE_ID",
+            "YOUR_TEMPLATE_ID",
+            form
+        );
+
+        status.textContent =
+            "Thank you! Your enquiry has been sent.";
+
+        status.style.color = "green";
+
+        form.reset();
+
+    } catch (error) {
+
+        console.error(error);
+
+        status.textContent =
+            "Unable to send your message. Please try again.";
+
+        status.style.color = "red";
+
+    } finally {
+
+        button.disabled = false;
+        button.textContent = "Send Message";
+
+    }
+});
+
 /* NETWORKING FUNDAMENTALS QUIZ */
 
 const networkQuiz = document.getElementById("networkQuiz");
