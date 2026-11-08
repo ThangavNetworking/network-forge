@@ -6,6 +6,8 @@ console.log("Network Forge website loaded!");
 
 const contactForm = document.getElementById("contactForm");
 
+const mailtoLink = `mailto:contactus@network-forge.com?subject=${subject}&body=${body}`;
+
 if (contactForm) {
 
     contactForm.addEventListener("submit", function (event) {
