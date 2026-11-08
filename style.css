@@ -1026,7 +1026,8 @@ header {
 
 }
 
-/* GOOGLE REVIEWS SECTION */
+
+/* CUSTOMER REVIEWS */
 
 .reviews-section {
     padding: 75px 7%;
@@ -1065,7 +1066,6 @@ header {
 .review-stars {
     color: #f5b400;
     font-size: 22px;
-    letter-spacing: 3px;
     margin-bottom: 15px;
 }
 
@@ -1074,32 +1074,43 @@ header {
     margin-bottom: 12px;
 }
 
-.review-text {
+.review-card p {
     color: #64748b;
-    font-size: 15px;
     line-height: 1.7;
+    margin-bottom: 18px;
 }
 
-.review-customer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 22px;
-    border-top: 1px solid #e5edf5;
-    padding-top: 15px;
+.review-card strong,
+.review-card small {
+    display: block;
 }
 
-.review-customer strong {
+.review-card strong {
     color: #0b2545;
 }
 
-.review-customer span {
+.review-card small {
     color: #64748b;
-    font-size: 13px;
+    margin-top: 4px;
 }
 
 .review-button {
     text-align: center;
     margin-top: 35px;
+}
+
+.review-button a {
+    display: inline-block;
+    background: #0ea5e9;
+    color: white;
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.review-button a:hover {
+    background: #0284c7;
 }
 
 @media (max-width: 900px) {
@@ -1113,4 +1124,3 @@ header {
         grid-template-columns: 1fr;
     }
 }
-
