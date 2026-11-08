@@ -56,7 +56,7 @@ if (contactForm) {
 
 // Initialise EmailJS
 emailjs.init({
-    publicKey: "YOUR_PUBLIC_KEY"
+    publicKey: "nFtXlH9nt4yRy7wHC"
 });
 
 const form = document.getElementById("contactForm");
@@ -74,8 +74,8 @@ form.addEventListener("submit", async function(event) {
     try {
 
         await emailjs.sendForm(
-            "YOUR_SERVICE_ID",
-            "YOUR_TEMPLATE_ID",
+            "service_x4nsonh",
+            "template_bsd1d34",
             form
         );
 
