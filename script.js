@@ -45,10 +45,7 @@ if (contactForm) {
 
         document.getElementById("formStatus").textContent =
             "Opening your email application...";
-
-        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-        <script src="script.js"></script>
-        
+ 
 
     });
 
