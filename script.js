@@ -75,7 +75,7 @@ form.addEventListener("submit", async function(event) {
 
         await emailjs.sendForm(
             "service_x737bzg",
-            "template_0p2bl6f",
+            "template_65jchok",
             form
         );
 
